@@ -1,0 +1,1 @@
+<img src="{{url('images/logo_busca.png')}}" alt="Logo Busca Curitiba"/>
