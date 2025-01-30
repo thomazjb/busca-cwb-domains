@@ -1,4 +1,4 @@
-# Aplicação de Busca de CEP com Laravel 11 e Vue.js 
+# Aplicação de Gerenciamento de Domínios com Laravel 11 e Blade 
 
 A aplicação tem como utilidade a validação de conhecimentos técnicos para a vaga de Desenvolvedor Full Stack na empresa "Busca Curitiba".
 Feito por Thomaz Juliann Boncompagni.
