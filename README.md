@@ -1,66 +1,79 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Aplicação de Busca de CEP com Laravel 11 e Vue.js 
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A aplicação tem como utilidade a validação de conhecimentos técnicos para a vaga de Desenvolvedor Full Stack na empresa "Busca Curitiba".
+Feito por Thomaz Juliann Boncompagni.
 
-## About Laravel
+## Avisos importantes
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- A aplicação foi desenvolvida utilizando sail, ambiente de dockerização do laravel, é necessário ter o docker instalado na máquina para rodar o ambiente corretamente.
+- É importante que você possua node e npm instalados na maquina virtual para facilitar o gerenciamento da aplicação, caso precise buildar o front externamente.
+- Caso haja algum bug ou erro no build me contate através de thomaz.jb@hotmail.com
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Tecnologias Utilizadas
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **Laravel 11**: Framework PHP poderoso e elegante para o desenvolvimento de aplicativos web.
+- **Breeze**: Biblioteca de gerenciamento de autenticação de usuários.
+- **Blade**: Engine de desenvolvimento de templates para Laravel.
+- **Vite**: Ferramenta de gerenciamento de servidores front-end. Otima ferramenta para compilação rápida quando uma mudança é feita na página.
+- **Inertia.js**: Biblioteca que permite o gerenciamento de monolitos, agilizando a recuperação e gerenciamento de dados entre Back e Front.
+- **Sail**: Conjunto de scripts Docker para Laravel que facilita o gerenciamento para desenvolvimento local.
+- **MySQL 8**: Sistema de gerenciamento de banco de dados de código aberto.
+- **PHPMyAdmin**: Ferramenta de administração e desenvolvimento de banco de dados SQL.
 
-## Learning Laravel
+## Funcionalidades
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- **CRUD de Domínios**: Os usuários autenticados têm a possibilidade de cadastrar um novo domínio, bem como gerenciar aqueles já cadastrados.
+- **Painel de Login**: Acesso restrito apenas para usuários autenticados.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Como Executar Localmente
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+1. Clone este repositório:
 
-## Laravel Sponsors
+   ```
+   git clone https://github.com/thomazjb/busca-cwwb-domains.git
+   ```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+2. entre no repositório:
 
-### Premium Partners
+   ```
+   cd busca-cwwb-domains
+   ```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+3. Faça o build da aplicação:
 
-## Contributing
+   ```
+   sail build --no-cache
+   ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+4. Levante o conteiner da aplicação:
 
-## Code of Conduct
+   ```
+   sail up -d
+   ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-## Security Vulnerabilities
+7. Instale as dependências PHP com o Composer:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+   ```
+   sail composer install
+   ```
 
-## License
+8. Copie o arquivo de ambiente de exemplo:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+   ```
+   cp .env.example .env
+   ```
+   
+9. Execute as migrações do banco de dados para criar as tabelas necessárias:
+
+   ```
+   sail artisan migrate
+   ```
+
+10. Configure seu ambiente no arquivo `.env`, especialmente as configurações do banco de dados PostgreSQL 
+
+
+
+## Licença
+
+Este projeto está licenciado sob a [Licença MIT](LICENSE).
