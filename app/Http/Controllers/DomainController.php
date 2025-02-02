@@ -4,18 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\Domain;
 use Illuminate\Http\Request;
-use App\Http\Requests\DomainUpdateRequest;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Redis;
-use Illuminate\View\View;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
 
 class DomainController extends Controller
 {
 
+    /**
+    * Store the new Domain.
+    */
     public function store(Request $request): RedirectResponse
     {
 
@@ -33,12 +31,18 @@ class DomainController extends Controller
         return Redirect::route('dashboard')->with('success', 'Domínio adicionado com sucesso!');
     }
 
+    /**
+    * Delete the selected Domain.
+    */
     public function destroy(Domain $domain): RedirectResponse
     {
         $domain->delete();
         return Redirect::route('dashboard')->with('success', 'Domínio excluído com sucesso!');
     }
 
+    /**
+    * Edit a Domain.
+    */
     public function edit(Request $request, Domain $domain)
     {
        
@@ -53,9 +57,7 @@ class DomainController extends Controller
 
         $domain->update($validatedData);
 
-        // Retorna para o dashboard com uma mensagem de sucesso
-        return redirect()->route('dashboard')
-            ->with('success', 'Domínio atualizado com sucesso.');
+        return redirect()->route('dashboard')->with('success', 'Domínio atualizado com sucesso.');
     }
     
 }

@@ -39,9 +39,6 @@
         </div>
     </div>
 
-
-
-
     <div class="max-w-7xl mx-auto bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
         <div class="flex justify-between items-center mb-4">
             <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">Gerenciamento de Domínios</h3>
@@ -49,16 +46,18 @@
                 x-on:click.prevent="$dispatch('open-modal', 'add-new-domain')">{{ __('Adicionar Domínio') }}</x-add-domain-button>
         </div>
 
-        <!-- Campo de Busca -->
-        <form method="GET" action="{{ route('dashboard') }}" class="mb-4">
+        <!-- Search Form -->
+        <form method="GET" action="{{ route('dashboard') }}" class="mb-4 flex flex-col sm:flex-row items-center gap-2">
             <input type="text" name="search" value="{{ $search ?? '' }}"
                 placeholder="Buscar por domínio ou hospedagem..."
-                class="p-2 border border-gray-300 dark:border-gray-600 rounded-lg w-full md:w-1/3 focus:ring-2 focus:ring-green-500">
-            <button type="submit"
-                class="ml-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">Buscar</button>
+                class="p-2 border border-gray-300 dark:border-gray-600 rounded-lg w-full sm:w-auto md:w-1/3 focus:ring-2 focus:ring-green-500">
+            <button class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 w-full sm:w-auto">
+                Buscar
+            </button>
         </form>
+        
 
-        <!-- Tabela -->
+        <!-- Table -->
         <div class="overflow-x-auto">
             <table class="min-w-full bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg">
                 <thead>
@@ -90,7 +89,7 @@
                             </td>
                             <td class="px-4 py-2 text-center">
                                 <div class="flex justify-center space-x-2">
-                                    <!-- Botão Visualizar -->
+                                    <!-- View Button -->
                                     <x-options-button x-data
                                         x-on:click.prevent="$dispatch('open-modal', { 
                                                 id: 'view-domain', 
@@ -104,9 +103,8 @@
                                         </svg>
                                         {{ __('Visualizar') }}
                                     </x-options-button>
-                                    <!-- Botão Editar -->
-                                    <x-options-button x-data
-                                        :domain="$domain"
+                                    <!-- Edit Button -->
+                                    <x-options-button x-data :domain="$domain"
                                         x-on:click.prevent="$dispatch('open-modal', { 
                                                 id: 'edit-domain', 
                                                 domain: {{ json_encode($domain) }}
@@ -119,7 +117,7 @@
                                         </svg>
                                         {{ __('Editar') }}
                                     </x-options-button>
-                                    <!-- Formulário para exclusão -->
+                                    <!-- Delete Button -->
 
                                     <x-options-button x-data
                                         x-on:click.prevent="$dispatch('open-modal', { id: 'delete-domain', domainId: {{ $domain->id }} })"
@@ -145,9 +143,8 @@
         </div>
     </div>
 
-@include('domain.partials.add-domain-form')
-@include('domain.partials.delete-domain-form')
-@include('domain.partials.edit-domain-form')
-@include('domain.partials.view-domain-form')
+    @include('domain.partials.add-domain-form')
+    @include('domain.partials.delete-domain-form')
+    @include('domain.partials.edit-domain-form')
+    @include('domain.partials.view-domain-form')
 </x-app-layout>
-

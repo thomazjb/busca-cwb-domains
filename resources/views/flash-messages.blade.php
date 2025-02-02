@@ -16,15 +16,15 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        // Seleciona todas as toasts
+        // select all toasts
         document.querySelectorAll(".toast").forEach((toast) => {
-            // Remove após 3 segundos
+            // Close after 3 seconds
             setTimeout(() => {
                 toast.classList.add("opacity-0");
                 setTimeout(() => toast.remove(), 500);
             }, 3000);
 
-            // Fecha ao clicar no botão
+            // Close on click
             toast.querySelector(".close-button").addEventListener("click", function () {
                 toast.classList.add("opacity-0");
                 setTimeout(() => toast.remove(), 500);

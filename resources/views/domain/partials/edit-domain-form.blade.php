@@ -1,14 +1,14 @@
+@if(isset($domain))
 <x-modal name="edit-domain" focusable>
     <div x-data="{
         domain: null,
-        init() {
-        }
+        init() {}
     }"
-    x-on:open-modal.window="if ($event.detail.id === 'edit-domain') { 
+        x-on:open-modal.window="if ($event.detail.id === 'edit-domain') { 
         domain = $event.detail.domain;
         $dispatch('open-modal', 'edit-domain');
     }">
-        
+
         <template x-if="domain">
             <form method="post" action="{{ route('domain.edit', $domain->id) }}" class="p-6">
                 @csrf
@@ -22,64 +22,39 @@
                     {{ __('Atenção, não é possível recuperar uma informação editada após salvar, por isso edite as informações e salve tendo certeza de que estão certas.') }}
                 </p>
 
-                <!-- Primeira linha: Domínio e Hospedagem -->
+                <!-- First line: Domain e Host -->
                 <div class="mt-6 grid grid-cols-2 gap-4">
                     <div>
-                        
                         <x-input-label for="domain" value="{{ __('Domínio') }}" />
-                        <x-text-input
-                            id="domain"
-                            name="domain"
-                            type="text"
-                            x-model="domain.domain"
-                            class="mt-1 block w-full"
-                            placeholder="{{ __('Domínio') }}"
-                        />
+                        <x-text-input id="domain" name="domain" type="text" x-model="domain.domain"
+                            class="mt-1 block w-full" placeholder="{{ __('Domínio') }}" />
                     </div>
 
                     <div>
                         <x-input-label for="host" value="{{ __('Hospedagem') }}" />
-                        <x-text-input
-                            id="host"
-                            name="host"
-                            type="text"
-                            x-model="domain.host"
-                            class="mt-1 block w-full"
-                            placeholder="{{ __('Hospedagem') }}"
-                        />
+                        <x-text-input id="host" name="host" type="text" x-model="domain.host"
+                            class="mt-1 block w-full" placeholder="{{ __('Hospedagem') }}" />
                     </div>
                 </div>
 
-                <!-- Segunda linha: Registrado em e Expira em -->
+                <!-- Second Line: Registered at and Expires at -->
                 <div class="mt-6 grid grid-cols-2 gap-4">
                     <div>
                         <x-input-label for="registered_at" value="{{ __('Registrado em:') }}" />
-                        <x-date-picker
-                            name="registered_at"
-                            x-model="domain.registered_at"
-                            class="mt-1 block w-full"
-                        />
+                        <x-date-picker name="registered_at" x-model="domain.registered_at" class="mt-1 block w-full" />
                     </div>
 
                     <div>
                         <x-input-label for="expires_at" value="{{ __('Expira em:') }}" />
-                        <x-date-picker
-                            name="expires_at"
-                            x-model="domain.expires_at"
-                            class="mt-1 block w-full"
-                        />
+                        <x-date-picker name="expires_at" x-model="domain.expires_at" class="mt-1 block w-full" />
                     </div>
                 </div>
 
-                <!-- Terceira linha: Notas -->
+                <!-- Third line: Notes -->
                 <div class="mt-6 block w-full">
                     <div>
                         <x-input-label for="notes" value="{{ __('Notas:') }}" />
-                        <x-text-area-input
-                            name="notes"
-                            x-model="domain.notes"
-                            class="mt-1 block w-full"
-                        />
+                        <x-text-area-input name="notes" x-model="domain.notes" class="mt-1 block w-full" />
                     </div>
                 </div>
 
@@ -96,3 +71,4 @@
         </template>
     </div>
 </x-modal>
+@endif

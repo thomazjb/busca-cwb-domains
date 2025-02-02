@@ -52,12 +52,13 @@
                     <p class="text-gray-500 mt-2">As tecnologias utilizadas foram:</p>
                     <p class="text-gray-500 mt-2">
                         - Framework Laravel 11; <br>
-                        - Sail 2; <br>
                         - PHP 8.3; <br>
+                        - Sail e Docker; <br>
+                        - AlpineJS; <br>
                         - Blade e Breeze; <br>
                         - TailwindCSS 3.1; <br>
                         - MySQL 8; <br>
-
+                        - PHPMyAdmin; <br>
                     </p>
                 </div>
                 <div class="p-6">
@@ -66,7 +67,7 @@
                     <p class="text-gray-500 mt-2">
                         - CRUD de Usuários; <br>
                         - Painel de Gerenciamento de domínios; <br>
-
+                        - CRUD de Domínios; <br>
                     </p>
                 </div>
             </main>

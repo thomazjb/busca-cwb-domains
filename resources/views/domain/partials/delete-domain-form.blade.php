@@ -1,7 +1,7 @@
-<x-modal name="delete-domain" :show="$errors->userDeletion->isNotEmpty()" focusable>
+<x-modal name="delete-domain" focusable>
     <div x-data="{ domainId: null }"
-         x-on:open-modal.window="if ($event.detail.id === 'delete-domain') { domainId = $event.detail.domainId; $dispatch('open-modal', 'delete-domain'); }">
-        
+        x-on:open-modal.window="if ($event.detail.id === 'delete-domain') { domainId = $event.detail.domainId; $dispatch('open-modal', 'delete-domain'); }">
+
         <form method="POST" x-bind:action="domainId ? '{{ url('/domain') }}/' + domainId : '#'" class="p-6">
             @csrf
             @method('DELETE')
