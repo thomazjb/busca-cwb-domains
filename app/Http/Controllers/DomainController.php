@@ -17,6 +17,20 @@ class DomainController extends Controller
     public function store(Request $request): RedirectResponse
     {
 
+        $request->validate(
+            [
+                'domain' => 'required|string|unique:domains|max:255',
+                'host' => 'required|string|max:255',
+                'registered_at' => 'required|date|before_or_equal:expires_at',
+                'expires_at' => 'required|date|after_or_equal:registered_at',
+                'notes' => 'nullable|string|max:1000',
+            ],
+            [   'unique' => 'O domínio precisa ser único!',
+                'before_or_equal' => 'A data de registro precisa anteceder a data de expiração!',
+                'after_or_equal' => 'a Data de expiração não pode ser menor que a data de registro!'
+            ]
+        );
+
         $registeredAt = Carbon::createFromFormat('d/m/Y', $request->input('registered_at'))->format('Y-m-d');
         $expiresAt = Carbon::createFromFormat('d/m/Y', $request->input('expires_at'))->format('Y-m-d');
 
@@ -46,13 +60,16 @@ class DomainController extends Controller
     public function edit(Request $request, Domain $domain)
     {
        
-        // Validação dos dados da requisição
         $validatedData = $request->validate([
-            'domain' => 'required|string|max:255',
+            'domain' => 'required|string|unique:domains|max:255',
             'host' => 'required|string|max:255',
-            'registered_at' => 'required|date',
-            'expires_at' => 'required|date',
+            'registered_at' => 'required|date|before_or_equal:expires_at',
+                'expires_at' => 'required|date|after_or_equal:registered_at',
             'notes' => 'nullable|string',
+        ],
+        [   'unique' => 'O domínio precisa ser único!',
+            'before_or_equal' => 'A data de registro precisa anteceder a data de expiração!',
+            'after_or_equal' => 'a Data de expiração não pode ser menor que a data de registro!'
         ]);
 
         $domain->update($validatedData);

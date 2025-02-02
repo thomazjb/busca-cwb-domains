@@ -142,7 +142,6 @@
             </table>
         </div>
     </div>
-
     @include('domain.partials.add-domain-form')
     @include('domain.partials.delete-domain-form')
     @include('domain.partials.edit-domain-form')
