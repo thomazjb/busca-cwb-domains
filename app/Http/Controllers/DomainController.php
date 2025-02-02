@@ -19,15 +19,17 @@ class DomainController extends Controller
 
         $request->validate(
             [
-                'domain' => 'required|string|unique:domains|max:255',
-                'host' => 'required|string|max:255',
-                'registered_at' => 'required|date|before_or_equal:expires_at',
-                'expires_at' => 'required|date|after_or_equal:registered_at',
+                'domain' => 'required|string|unique:domains|max:255|regex:/^([a-zA-Z0-9\-]+\.)+[a-zA-Z]{2,}$/',
+                'host' => 'required|string|max:255|regex:/^([a-zA-Z0-9\-]+\.)+[a-zA-Z]{2,}$/',
+                'registered_at' => 'required|date_format:d/m/Y|before_or_equal:expires_at',
+                'expires_at' => 'required|date_format:d/m/Y|after_or_equal:registered_at',
                 'notes' => 'nullable|string|max:1000',
             ],
             [   'unique' => 'O domínio precisa ser único!',
                 'before_or_equal' => 'A data de registro precisa anteceder a data de expiração!',
-                'after_or_equal' => 'a Data de expiração não pode ser menor que a data de registro!'
+                'after_or_equal' => 'a Data de expiração não pode ser menor que a data de registro!',
+                'domain.regex' => 'É necessário que o domínio seja uma url válida!',
+                'host.regex' => 'É necessário que o host seja uma url válida!'
             ]
         );
 
@@ -61,15 +63,17 @@ class DomainController extends Controller
     {
        
         $validatedData = $request->validate([
-            'domain' => 'required|string|unique:domains|max:255',
-            'host' => 'required|string|max:255',
+            'domain' => 'required|string|unique:domains|max:255|regex:/^([a-zA-Z0-9\-]+\.)+[a-zA-Z]{2,}$/',
+            'host' => 'required|string|max:255|regex:/^([a-zA-Z0-9\-]+\.)+[a-zA-Z]{2,}$/',
             'registered_at' => 'required|date|before_or_equal:expires_at',
                 'expires_at' => 'required|date|after_or_equal:registered_at',
             'notes' => 'nullable|string',
         ],
         [   'unique' => 'O domínio precisa ser único!',
             'before_or_equal' => 'A data de registro precisa anteceder a data de expiração!',
-            'after_or_equal' => 'a Data de expiração não pode ser menor que a data de registro!'
+            'after_or_equal' => 'a Data de expiração não pode ser menor que a data de registro!',
+            'domain.regex' => 'É necessário que o domínio seja uma url válida!',
+            'host.regex' => 'É necessário que o host seja uma url válida!'
         ]);
 
         $domain->update($validatedData);
