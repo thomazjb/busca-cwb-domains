@@ -41,7 +41,7 @@
                 <div class="mt-6 grid grid-cols-2 gap-4">
                     <div>
                         <x-input-label for="registered_at" value="{{ __('Registrado em:') }}" />
-                        <input type="date" name="registered_at" x-model="domain.registered_at" :value="$domain->registered_at" class="mt-1 block w-full" />
+                        <x-date-picker type="date" name="registered_at" x-model="domain.registered_at" :value="$domain->registered_at" class="mt-1 block w-full" />
                     </div>
 
                     <div>
