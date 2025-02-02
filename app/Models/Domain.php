@@ -9,5 +9,5 @@ class Domain extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'host', 'registered_at', 'expire_in', 'status'];
+    protected $fillable = ['domain', 'host', 'registered_at', 'expires_at', 'notes', 'status'];
 }

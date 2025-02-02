@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('domains', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('domain');
             $table->string('host');
             $table->date('registered_at');
-            $table->date('expire_in');
+            $table->date('expires_at');
+            $table->longText('notes')->nullable();
             $table->enum('status', ['Ativo', 'Expirado']); 
             $table->timestamps();
         });

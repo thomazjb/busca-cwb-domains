@@ -15,16 +15,15 @@ class DashboardController extends Controller
         $search = $request->input('search');
     
         $domains = Domain::when($search, function ($query, $search) {
-                return $query->where('name', 'like', "%{$search}%")
+                return $query->where('domain', 'like', "%{$search}%")
                              ->orWhere('host', 'like', "%{$search}%");
             })
-            ->orderByRaw("CASE WHEN expire_in < ? THEN 0 ELSE 1 END, expire_in ASC", [$today]) // Expirados primeiro
+            ->orderByRaw("CASE WHEN expires_at < ? THEN 0 ELSE 1 END, expires_at ASC", [$today]) // Expired first
             ->get();
     
-        // Contagens para os cards
         $registeredCount = $domains->count();
-        $expiredCount = $domains->where('expire_in', '<', $today)->count();
-        $expiringThisWeekCount = $domains->whereBetween('expire_in', [$today, $today->copy()->addWeek()])->count();
+        $expiredCount = $domains->where('expires_at', '<', $today)->count();
+        $expiringThisWeekCount = $domains->whereBetween('expires_at', [$today, $today->copy()->addWeek()])->count();
     
         return view('dashboard', [
             'domains' => $domains,
