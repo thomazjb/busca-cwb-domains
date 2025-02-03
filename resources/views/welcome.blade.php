@@ -22,7 +22,7 @@
         <header class="w-full px-6 py-4 bg-white shadow-md">
             <div class="max-w-7xl mx-auto grid grid-cols-2 items-center gap-2 lg:grid-cols-3">
                 <div class="flex lg:justify-center lg:col-start-2">
-                    <img src="{{url('images/logo_busca.png')}}" alt="Logo Busca Curitiba"/>
+                    <img src="https://buscacuritiba.com.br/site/images/logo_busca.png" alt="" srcset="">
                 </div>
                 @if (Route::has('login'))
                     <nav class="-mx-3 flex flex-1 justify-end">
