@@ -10,9 +10,9 @@
     }">
 
         <template x-if="domain">
-            <form method="post" action="{{ route('domain.edit', $domain->id) }}" class="p-6">
+            <form class="p-6">
                 @csrf
-                @method('PATCH')
+
 
                 <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
                     {{ __('Visualizar domínio') }}
