@@ -42,36 +42,39 @@ Feito por Thomaz Juliann Boncompagni.
 3. Faça o build da aplicação:
 
    ```
-   sail build --no-cache
+   ./vendor/bin/sail build --no-cache
    ```
 
 4. Levante o conteiner da aplicação:
 
    ```
-   sail up -d
+   ./vendor/bin/sail up -d
    ```
 
 
-7. Instale as dependências PHP com o Composer:
+5. Instale as dependências PHP com o Composer:
 
    ```
-   sail composer install
+   ./vendor/bin/sail composer install
    ```
 
-8. Copie o arquivo de ambiente de exemplo:
+6. Copie o arquivo de ambiente de exemplo:
 
    ```
    cp .env.example .env
    ```
    
-9. Execute as migrações do banco de dados para criar as tabelas necessárias:
+7. Execute as migrações do banco de dados para criar as tabelas necessárias:
 
    ```
-   sail artisan migrate
+   ./vendor/bin/sail artisan migrate
    ```
+   
+8. Execute as migrações do banco de dados para criar as tabelas necessárias:
 
-10. Configure seu ambiente no arquivo `.env`, especialmente as configurações do banco de dados PostgreSQL 
-
+   ```
+   ./vendor/bin/sail npm run dev
+   ```
 
 
 ## Licença
