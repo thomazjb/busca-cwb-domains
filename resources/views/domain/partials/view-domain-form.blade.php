@@ -43,14 +43,14 @@
                 <div class="mt-6 grid grid-cols-2 gap-4">
                     <div>
                         <x-input-label for="registered_at" value="{{ __('Registrado em:') }}" />
-                        <x-date-picker name="registered_at" x-model="domain.registered_at"
+                        <x-date-picker name="registered_at" x-model="domain.registered_at" :value="$domain->registered_at"
                             class="mt-1 block w-full bg-slate-200 pointer-events-none placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
                             disabled />
                     </div>
 
                     <div>
                         <x-input-label for="expires_at" value="{{ __('Expira em:') }}" />
-                        <x-date-picker name="expires_at" x-model="domain.expires_at"
+                        <x-date-picker name="expires_at" x-model="domain.expires_at" :value="$domain->expires_at"
                             class="mt-1 block w-full bg-slate-200 pointer-events-none placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
                             disabled />
                     </div>
